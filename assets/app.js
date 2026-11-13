@@ -22,6 +22,8 @@
     themeButtons.forEach(function (btn) {
       btn.setAttribute('aria-pressed', String(btn.getAttribute('data-theme-option') === theme));
     });
+    var caption = document.querySelector('[data-theme-current]');
+    if (caption) caption.textContent = theme.toUpperCase();
     syncThemeColor();
     if (persist) {
       try { localStorage.setItem(THEME_KEY, theme); } catch (e) { /* приватный режим */ }
@@ -33,6 +35,37 @@
       setTheme(btn.getAttribute('data-theme-option'), true);
     });
   });
+
+  /* --------------------------------------------------- панель переключателя */
+  var switcher = document.querySelector('.theme-switch');
+  var switcherToggle = document.getElementById('theme-toggle');
+
+  function setSwitcher(open) {
+    if (!switcher || !switcherToggle) return;
+    switcher.classList.toggle('is-open', open);
+    switcherToggle.setAttribute('aria-expanded', String(open));
+  }
+
+  if (switcher && switcherToggle) {
+    switcherToggle.addEventListener('click', function (event) {
+      event.stopPropagation();
+      setSwitcher(!switcher.classList.contains('is-open'));
+    });
+    document.addEventListener('click', function (event) {
+      if (!switcher.contains(event.target)) setSwitcher(false);
+    });
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape' && switcher.classList.contains('is-open')) {
+        setSwitcher(false);
+        switcherToggle.focus();
+      }
+    });
+    themeButtons.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        if (window.innerWidth <= 560) setSwitcher(false);
+      });
+    });
+  }
 
   var initialTheme = 'b';
   try {
