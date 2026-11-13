@@ -485,22 +485,29 @@
   </footer>
 
   <aside class="theme-switch" aria-label="Переключатель стиля концепта">
-    <p class="theme-switch__label">Стиль концепта</p>
-    <button class="theme-btn" type="button" data-theme-option="b" aria-pressed="true">
-      <span class="theme-btn__dot" aria-hidden="true"></span>
-      <span class="theme-btn__key">B</span>
-      <span class="theme-btn__name">Тёплый премиум</span>
+    <button class="theme-switch__toggle" type="button" id="theme-toggle" aria-expanded="false" aria-controls="theme-panel">
+      <span class="theme-switch__dot" aria-hidden="true"></span>
+      <span class="theme-switch__caption">Стиль <b data-theme-current>B</b></span>
+      <span class="theme-switch__chev" aria-hidden="true"></span>
     </button>
-    <button class="theme-btn" type="button" data-theme-option="c" aria-pressed="false">
-      <span class="theme-btn__dot" aria-hidden="true"></span>
-      <span class="theme-btn__key">C</span>
-      <span class="theme-btn__name">Сочный DTC</span>
-    </button>
-    <button class="theme-btn" type="button" data-theme-option="a" aria-pressed="false">
-      <span class="theme-btn__dot" aria-hidden="true"></span>
-      <span class="theme-btn__key">A</span>
-      <span class="theme-btn__name">Минеральный свет</span>
-    </button>
+    <div class="theme-switch__panel" id="theme-panel">
+      <p class="theme-switch__label">Стиль концепта</p>
+      <button class="theme-btn" type="button" data-theme-option="b" aria-pressed="true">
+        <span class="theme-btn__dot" aria-hidden="true"></span>
+        <span class="theme-btn__key">B</span>
+        <span class="theme-btn__name">Тёплый премиум</span>
+      </button>
+      <button class="theme-btn" type="button" data-theme-option="c" aria-pressed="false">
+        <span class="theme-btn__dot" aria-hidden="true"></span>
+        <span class="theme-btn__key">C</span>
+        <span class="theme-btn__name">Сочный DTC</span>
+      </button>
+      <button class="theme-btn" type="button" data-theme-option="a" aria-pressed="false">
+        <span class="theme-btn__dot" aria-hidden="true"></span>
+        <span class="theme-btn__key">A</span>
+        <span class="theme-btn__name">Минеральный свет</span>
+      </button>
+    </div>
   </aside>
 
   <script src="assets/app.js" defer></script>
